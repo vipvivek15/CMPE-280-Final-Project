@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+        #registration, #taskApp {
+            max-width: 400px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        input, textarea, select, button {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+        }
+        #tasks {
+            margin-top: 20px;
+        }
+        .task {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+<div id="registration">
+    <h1>User Registration</h1>
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button onclick="registerUser()">Register</button>
+</div>
+
+<div id="taskApp" style="display:none;">
+    <h2>Task Manager</h2>
+    <div id="tasks"></div>
+    <form id="taskForm">
+        <input type="text" id="title" placeholder="Task Title" required>
+        <textarea id="description" placeholder="Task Description"></textarea>
+        <input type="datetime-local" id="dueDate">
+        <select id="priority">
+            <option value="High">High</option>
+            <option value="Medium" selected>Medium</option>
+            <option value="Low">Low</option>
+        </select>
+        <button type="submit">Add Task</button>
+    </form>
+</div>
+
+<script>
+    // Register user function
+    async function registerUser() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        const response = await fetch('/api/users/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password })
+        });
+
+        if (response.ok) {
+            alert('Registration successful');
+            document.getElementById('registration').style.display = 'none';
+            document.getElementById('taskApp').style.display = 'block';
+        } else {
+            alert('Registration failed');
+        }
+    }
+
+    // Load tasks on page load
+    document.addEventListener('DOMContentLoaded', displayTasks);
+
+    // Handle form submission to create new task
+    document.getElementById('taskForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const title = document.getElementById('title').value;
+        const description = document.getElementById('description').value;
+        const dueDate = document.getElementById('dueDate').value;
+        const priority = document.getElementById('priority').value;
+
+        const response = await fetch('/api/tasks', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ title, description, dueDate, priority })
+        });
+
+        if (response.ok) {
+            alert('Task created successfully');
+            document.getElementById('taskForm').reset();
+            displayTasks();
+        } else {
+            alert('Error creating task');
+        }
+    });
+
+    // Function to display all tasks
+    async function displayTasks() {
+        const response = await fetch('/api/tasks');
+        const tasks = await response.json();
+        const tasksContainer = document.getElementById('tasks');
+        tasksContainer.innerHTML = '';
+        tasks.forEach(task => {
+            const taskElement = document.createElement('div');
+            taskElement.classList.add('task');
+            taskElement.innerHTML = `
+                    <strong>Title:</strong> ${task.title} <br>
+                    <strong>Description:</strong> ${task.description} <br>
+                    <strong>Due Date:</strong> ${task.dueDate || 'N/A'} <br>
+                    <strong>Priority:</strong> ${task.priority}
+                    <button onclick="deleteTask(${task.id})">Delete</button>
+                `;
+            tasksContainer.appendChild(taskElement);
+        });
+    }
+
+    // Function to delete a task
+    async function deleteTask(id) {
+        const response = await fetch(`/api/tasks/${id}`, {
+            method: 'DELETE'
+        });
+        if (response.ok) {
+            alert('Task deleted');
+            displayTasks();
+        } else {
+            alert('Error deleting task');
+        }
+    }
+</script>
+</body>
+</html>
