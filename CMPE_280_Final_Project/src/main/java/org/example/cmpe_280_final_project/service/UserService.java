@@ -23,13 +23,15 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public Optional<User> findByUsername(String username) {
-        return Optional.ofNullable(userRepository.findByUsername(username));
-    }
+    public User login(String username, String rawPassword) {
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new IllegalArgumentException("User not found"));
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        if (!passwordEncoder.matches(rawPassword, user.getPassword())) {
+            throw new IllegalArgumentException("Invalid password");
+        }
+
+        return user;
     }
 }
 

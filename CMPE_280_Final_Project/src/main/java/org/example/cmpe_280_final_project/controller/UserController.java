@@ -16,4 +16,14 @@ public class UserController {
     public ResponseEntity<User> registerUser(@RequestBody User user) {
         return ResponseEntity.ok(userService.registerUser(user));
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody User user) {
+        try {
+            User loggedInUser = userService.login(user.getUsername(), user.getPassword());
+            return ResponseEntity.ok("Login successful for user: " + loggedInUser.getUsername());
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(401).body("Invalid username or password");
+        }
+    }
 }
