@@ -11,6 +11,7 @@ public class Task {
 
     private String title;
     private String description;
+    @Column(name = "due_date")
     private LocalDateTime dueDate;
     private String priority;
 
