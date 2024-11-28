@@ -8,19 +8,19 @@ In the resources folder, in application.properties, replace OPEN_API_KEY with yo
 ## Application Features
 
 ### 1. Login Page
-![Login Page](screenshots/Login_page.png)
+![Login Page](Login_page.png)
 
 ### 2. Register Page
-![Register Page](screenshots/Register_page.png)
+![Register Page](Register_page.png)
 
 ### 3. Main Page
-![Main Page](screenshots/Main_page_to_add_task.png)
+![Main Page](Main_page_to_add_task.png)
 
 ### 4. Adding a Task Manually
-![Adding Task Manually](screenshots/Adding_task_manually.png)
+![Adding Task Manually](Adding_task_manually.png)
 
-### 5. Adding a Task with ChatGPT
-![Adding Task with ChatGPT](screenshots/Adding_task_with_chatgpt.png)
+### 5. Adding a Task with ChatGPT, if you click delete, you can delete Task Manually
+![Adding Task with ChatGPT](Adding_task_with_chatgpt.png)
 
 ### 6. Deleting a Task with ChatGPT
-![Deleting Task with ChatGPT](screenshots/Deleting_task_with_chatgpt.png)
+![Deleting Task with ChatGPT](Deleting_task_with_chatgpt.png)
