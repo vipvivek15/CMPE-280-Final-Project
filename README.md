@@ -16,10 +16,10 @@ In the resources folder, in application.properties, replace OPEN_API_KEY with yo
 ### 3. Main Page
 ![Main Page](Main_page_to_add_task.png)
 
-### 4. Adding a Task Manually
+### 4. Adding a Task Manually, if you click delete, you can delete Task Manually
 ![Adding Task Manually](Adding_task_manually.png)
 
-### 5. Adding a Task with ChatGPT, if you click delete, you can delete Task Manually
+### 5. Adding a Task with ChatGPT
 ![Adding Task with ChatGPT](Adding_task_with_chatgpt.png)
 
 ### 6. Deleting a Task with ChatGPT
