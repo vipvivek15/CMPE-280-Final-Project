@@ -18,33 +18,6 @@ The application includes features such as task categorization, due date reminder
 ---
 
 ## Project Structure
-The repository is organized as follows:
-
-Here’s an expanded version of the README.md with additional details, features, and setup instructions for the Progressive-Web-Application-Task-Management project:
-
-markdown
-Copy code
-# Progressive-Web-Application-Task-Management
-
-## Description
-This repository contains the final project for **CMPE 280**. The project is a **Progressive Web Application (PWA)** for task management that enables users to efficiently create, manage, and track their tasks in various formats. By combining the responsiveness of modern web technologies with the capabilities of a native application, this PWA delivers a seamless and interactive user experience.
-
-The application includes features such as task categorization, due date reminders, and progress tracking. It also integrates with external APIs to enhance functionality, such as providing suggestions for task prioritization.
-
----
-
-## Features
-- **Task Creation and Categorization**: Easily create tasks and organize them by category (e.g., work, personal, urgent).
-- **Progress Tracking**: Visualize the progress of tasks using interactive charts and timelines.
-- **Offline Support**: The PWA allows users to manage tasks even without an internet connection.
-- **API Integration**: Connects with external services for additional features like AI-based task prioritization (requires an OpenAI key).
-- **Responsive Design**: Optimized for use on both desktop and mobile devices.
-- **Search and Filtering**: Quickly find tasks using robust search and filtering options.
-
----
-
-## Project Structure
-The repository is organized as follows:
 ├── src/main/java/com/cmpe280/finalproject │ ├── CMPE280FinalProjectApplication.java # Main application entry point ├── src/main/resources │ ├── application.properties # Configuration file │ ├── static/ │ ├── index.html # Main HTML file │ ├── css/ # Styling files │ ├── js/ # JavaScript files │ ├── images/ # Assets and icons ├── README.md # Documentation
 
 ---
