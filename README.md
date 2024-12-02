@@ -63,10 +63,10 @@ Access the Application
 Once the backend is running and the frontend is open in your browser, you can begin using the application.
 
 ## Contributors
-** Vivek Ponnala **
-** Venkat Gowtham Bhupalam **
-** Shashi Kumar Singarapu **
-** Aravind Reddy Kalluri **
+- ** Vivek Ponnala **
+- ** Venkat Gowtham Bhupalam **
+- ** Shashi Kumar Singarapu **
+- ** Aravind Reddy Kalluri **
 
 ---
 ## Working Application Features and Screenshots
