@@ -62,9 +62,7 @@ Double-click the index.html file to open it in your default browser.
 Access the Application
 Once the backend is running and the frontend is open in your browser, you can begin using the application.
 
-## CMPE 280 Final Project
-
-## Application Features
+## Working Application Features and Screenshots
 
 ### 1. Login Page
 ![Login Page](Login_page.png)
